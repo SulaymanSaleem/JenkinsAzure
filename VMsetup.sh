@@ -1,22 +1,23 @@
 #Creating resource group
 
-#az group create --resource-group JenkinsGroup -l uksouth
+az group create --resource-group JenkinsGroup -l uksouth
 
 #Creating a virtual network wihtin our resource group
 
-#az network vnet create -g JenkinsGroup -n JenkinsVirtualNetwork --address-prefixes 10.0.0.0/16 --subnet-name JenkinsSubnet --subnet-prefix 10.0.0.0/24
+az network vnet create -g JenkinsGroup -n JenkinsVirtualNetwork --address-prefixes 10.0.0.0/16 --subnet-name JenkinsSubnet --subnet-prefix 10.0.0.0/24
 
 #Creating our subnets 
 
-#az network vnet subnet create -g JenkinsGroup  --vnet-name JenkinsVirtualNetwork --name JenkinsSubnet --address-prefixes 10.0.0.0/24
+az network vnet subnet create -g JenkinsGroup  --vnet-name JenkinsVirtualNetwork --name JenkinsSubnet --address-prefixes 10.0.0.0/24
 
 #Creating the nsg
 
-#az network nsg create -g JenkinsGroup -n JenkinsNSG
+az network nsg create -g JenkinsGroup -n JenkinsNSG
 
 #Creating the rules in our nsg
 
-#az network nsg rule create --resource-group JenkinsGroup --name SSH --priority 500 --nsg-name JenkinsNSG
+az network nsg rule create --resource-group JenkinsGroup --name SSH --priority 100 --nsg-name JenkinsNSG
+az network nsg rule create --resource-group JenkinsGroup --name HTTP --priority 512 --nsg-name JenkinsNSG
 
 #Selecting our ports
 
